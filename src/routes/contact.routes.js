@@ -77,6 +77,28 @@ router.post("/", contactController.createContact);
 /**
  * @swagger
  * /api/contacts/{id}:
+ *   put:
+ *     summary: Actualizar un contacto existente
+ *     tags: [Contacts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del contacto a actualizar
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Contact'
+ *     responses:
+ *       200:
+ *         description: Contacto actualizado exitosamente
+ *       404:
+ *         description: Contacto no encontrado
+ * 
  *   delete:
  *     summary: Eliminar un contacto
  *     tags: [Contacts]
@@ -93,6 +115,7 @@ router.post("/", contactController.createContact);
  *       404:
  *         description: Contacto no encontrado
  */
+router.put("/:id", contactController.updateContact);
 router.delete("/:id", contactController.deleteContact);
 
 module.exports = router;

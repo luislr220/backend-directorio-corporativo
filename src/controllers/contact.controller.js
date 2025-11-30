@@ -22,6 +22,18 @@ const createContact = async (req, res) => {
   }
 };
 
+const updateContact = async (req, res) => {
+  try {
+    const updated = await contactService.updateContact(req.params.id, req.body);
+    if (!updated) return res.status(404).json({ message: "Contacto no encontrado" });
+
+    res.json(updated);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al actualizar" });
+  }
+};
+
 // Eliminar un contacto
 const deleteContact = async (req, res) => {
   try {
@@ -44,5 +56,6 @@ const deleteContact = async (req, res) => {
 module.exports = {
   getAllContacts,
   createContact,
+  updateContact,
   deleteContact,
 };

@@ -8,6 +8,10 @@ const createContact = async (data) => {
   return await contactModel.create(data);
 };
 
+const updateContact = async (id, data) => {
+  return await contactModel.update(id, data);
+};
+
 const deleteContact = async (id) => {
   return await contactModel.delete(id);
 };
@@ -15,5 +19,6 @@ const deleteContact = async (id) => {
 module.exports = {
   getAllContacts,
   createContact,
+  updateContact,
   deleteContact,
 };
